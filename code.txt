@@ -1,0 +1,68 @@
+class Solution {
+
+    int first(vector<int>&v,int x)
+    {
+        int temp=-1;
+        int s=0,e=v.size()-1;
+        int mid=s+(e-s)/2;
+        while(s<=e)
+        {
+           if(v[mid]==x)
+           {
+               temp=mid;
+               e=mid-1;
+           }
+           else if(x>v[mid])
+           {
+               s=mid+1;
+           }
+           else
+           {
+               e=mid-1;
+           }
+           mid=s+((e-s)/2);
+        }
+        return  temp;
+    }
+    
+    int last(vector<int>& v,int x)
+    {
+        int temp=-1;
+        int s=0,e=v.size()-1;
+        int mid=s+((e-s)/2);
+        while(s<=e)
+        {
+           if(v[mid]==x)
+           {
+               temp=mid;
+               s=mid+1;
+           }
+           else if(x>v[mid])
+           {
+               s=mid+1;
+           }
+           else
+           {
+               e=mid-1;
+           }
+           mid=s+((e-s)/2);
+        }
+        return  temp;
+    }
+    
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+
+
+
+int firsto=first(nums,target);
+int lasto =last(nums,target);
+
+return {firsto,lasto};
+
+
+
+
+        
+    }
+};
